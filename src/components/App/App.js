@@ -18,13 +18,26 @@ const App = () => {
     fetchAllMovies()
       .then(response => {
         if (response.data) {
-          console.log(response.data);
+          cleanMovieData(response.data);
         }
       })
       .catch(error => {
         setError('Sorry, we\'re unable to load the page at the moment.');
         console.log(error);
     })
+  }
+
+
+  const cleanMovieData = (data) => {
+    const movieArr = data.map(movie => {
+      return {
+        id: movie.id,
+        title: movie.title,
+        genres: movie.genres
+      }
+    })
+    console.log(movieArr);
+    setMovies(movieArr);
   }
 
   return (

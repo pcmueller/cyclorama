@@ -33,7 +33,7 @@ const Library = ({ movies, cards, setCards, filtered, error }) => {
           key={movie?.id}
           id={movie?.id}
           title={movie?.title}
-          genres={movie?.genres}
+          genres={utils.capitalizeElements(movie?.genres)}
         />
       )
     });

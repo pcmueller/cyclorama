@@ -1,0 +1,25 @@
+.search-container {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 35%;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 3px;
+  display: block;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 0px 10px 0px 24px;
+}
+
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-size: cover;
+  background-image: url('../../assets/small-cross-icon.svg');
+}

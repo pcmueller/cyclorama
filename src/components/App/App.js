@@ -43,7 +43,11 @@ const App = () => {
   return (
     <Router>
       <Route>
-        <Main></Main>
+        <Main
+          movies={movies}
+          error={error}
+          setError={setError}
+        />
       </Route>
       {/* <Route>
         <Details></Details>

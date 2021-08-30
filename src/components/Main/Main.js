@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Library from '../Library/Library';
 
-const Main = () => {
+const Main = ({ movies, error, setError }) => {
+
+  const [ cards, setCards ] = useState([]);
 
   return (
     <>
       <Header></Header>
-      <Library></Library>
+      <Library
+        movies={movies}
+        cards={cards}
+        setCards={setCards}
+      />
     </>
   )
 }

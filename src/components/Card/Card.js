@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Card = () => {
+const Card = ({ id, title }) => {
 
   return (
-    <article className='movie-card'>
-      MOVIE TITLE
-      <img />
+    <article className='movie-card grow'>
+      <img 
+        id={id} 
+        title={title}
+      />
     </article>
   )
 }

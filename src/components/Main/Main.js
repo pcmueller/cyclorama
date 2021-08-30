@@ -5,6 +5,7 @@ import Library from '../Library/Library';
 const Main = ({ movies, error, setError }) => {
 
   const [ cards, setCards ] = useState([]);
+  const [ filtered, setFiltered ] = useState([]);
 
   return (
     <>
@@ -13,6 +14,8 @@ const Main = ({ movies, error, setError }) => {
         movies={movies}
         cards={cards}
         setCards={setCards}
+        filtered={filtered}
+        error={error}
       />
     </>
   )

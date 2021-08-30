@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Card from '../Card/Card';
 
-const Library = ({ movies, cards, setCards }) => {
+const Library = ({ movies, cards, setCards, filtered, error }) => {
 
   useEffect(() => {
     if (movies.length > 0) {
@@ -30,7 +30,17 @@ const Library = ({ movies, cards, setCards }) => {
 
   return (
     <main className='main-page'>
-      {cards}
+      <div className='message-box'>
+        {error && <h2 className='message'>{error}</h2>}
+        {!error && !cards && <h2 className='message'>Page Loading 🍿</h2>}
+        {!error && cards.length > 0 && <h2 className='message'></h2>}
+      </div>
+      <section className='library'>
+        <div className='movie-cards'>
+          {filtered.length > 0 && filtered}
+          {filtered.length === 0 && !error && cards}
+        </div>
+      </section>
     </main>
   )
 }

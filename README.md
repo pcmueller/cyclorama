@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# CYCLORAMA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ **A movie app made for the Charter/Spectrum Front-End Code Challenge**
 
-## Available Scripts
+ ![Deployed Page](https://cyclorama-app.herokuapp.com/)
 
-In the project directory, you can run:
+## Challenge Specifications
 
-### `npm start`
+### User stories are as follows:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+• A user should be able to view a home page with a list of movies with their image and title.
+• A user should be able to filter movies by genre. This filter should default to “All” and take immediate effect
+when a selection is made. No additional clicks should be necessary when filtering.
+• A user should be able to search for a movie by title.
+• A user should be able to click into a movie to view additional detail.
+• The genre filter and search should work together. The genre filter should not reset the search and the search
+should not reset the genre filter. When both are used, only results that fit both criteria should be shown, not
+either one or the other.
+• A user should be able to reset the search by clearing the text value in the search input.
+• If any of the filters do not return any movies, the UI should indicate that no results were found.
+• If the image for a specific movie is not found, the application should display the included “defaultImage”
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### What we are looking for:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+• Deployed application
+• Modern styling with well-organized CSS
+• Using TypeScript is highly encouraged
+• No use of third-party component libraries such as Bootstrap or Material-UI
+• Using Create-React-App, Next.js, or Gatsby as a starter kit is okay
+• Well organized file structure
+• Descriptive naming conventions
+• DRY code that is readable and production ready
+• Reusable components
+• Sound logic for how the search and filter are architected
+• Full Git history with atomic commits
+Stretch goals:
+• Unit tests
+• Pagination of movies on home screen
+• CI / CD
+• Feel free to get creative with additional features!

@@ -140,12 +140,22 @@
   letter-spacing: 1px;
 }
 
-.release-date {
-  font-weight: 300;
+.top-cast {
+  width: 80%;
+  margin-top: 0.25em;
   margin-bottom: 1.25em;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.release-date {
+  margin-top: 0.25em;
+  margin-bottom: 1.25em;
+  font-weight: 300;
 }
 
 .runtime {
+  margin-top: 0.25em;
   margin-bottom: 1em;
   font-weight: 300;
 }

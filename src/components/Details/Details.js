@@ -67,11 +67,17 @@ const Details = ({ id, error, setError }) => {
                   <p className='genres'>{formatList(movie.genres)}</p>
                 </div>
                 <p className='description'>{movie.description}</p>
-                <p className='release-date'> 
-                  Released: {dayjs(movie.releaseDate).format('MMMM D, YYYY')}
+                Starring: 
+                <p className='top-cast'>
+                  {utils.formatActorNames(movie.topCast)}
                 </p>
+                Released: 
+                <p className='release-date'> 
+                  {dayjs(movie.releaseDate).format('MMMM D, YYYY')}
+                </p>
+                Runtime: 
                 <p className='runtime'>
-                  Runtime: {formatRuntime(movie.duration)}
+                  {formatRuntime(movie.duration)}
                 </p>
               </div>
             </div>

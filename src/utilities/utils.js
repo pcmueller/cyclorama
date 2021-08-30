@@ -11,6 +11,13 @@ const utils = {
     });
     return formatted;
   },
+
+  formatActorNames(array) {
+    const formatted = array.map(obj => {
+     return obj.name;
+    });
+    return formatted.join(', ');
+  },
 }
 
 export default utils;

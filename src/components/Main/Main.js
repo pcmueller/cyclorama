@@ -16,6 +16,21 @@ const Main = ({ movies, error, setError }) => {
     populateGenreList();
   }, [cards, filtered]);
 
+  useEffect(() => {
+    filterResults();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchResults, selectResults]);
+
+  useEffect(() => {
+    searchMovies();
+    populateGenreList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
+  
+  useEffect(() => {
+    filterByGenre();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selection]);
 
   const clearSearch = () => {
     setQuery('');

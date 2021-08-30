@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovieDetails } from '../../utilities/apiCalls';
-import utils from '../../utilities/utils';
+import { fetchMovieDetails } from '../../utils/apiCalls';
+import utils from '../../utils/utils';
 import { NavLink } from 'react-router-dom';
 
 var dayjs = require('dayjs');
@@ -20,6 +20,14 @@ const Details = ({ id, error, setError }) => {
       })
   }, [id, setError]);
 
+  const formatRuntime = (time) => {
+    if (time > 3600) {
+      return `${Math.floor(time / 3600)} hours ${Math.floor((time % 3600) / 60)} minutes`;
+    } else {
+      return `${time / 60} minutes`;
+    }
+  }
+
   const formatList = (list) => {
     let capitalized = utils.capitalizeElements(list);
 
@@ -27,7 +35,7 @@ const Details = ({ id, error, setError }) => {
   }
 
   return (
-  <>
+    <>
       {error && 
         <div className='message-box'>
           <h2 className='message'>{error}</h2>
@@ -63,7 +71,7 @@ const Details = ({ id, error, setError }) => {
                   Released: {dayjs(movie.releaseDate).format('MMMM D, YYYY')}
                 </p>
                 <p className='runtime'>
-                  Runtime: {movie.duration}
+                  Runtime: {formatRuntime(movie.duration)}
                 </p>
               </div>
             </div>
@@ -77,6 +85,7 @@ const Details = ({ id, error, setError }) => {
             </NavLink>
           </nav>
         </section>
+        
       }
     </>
   )

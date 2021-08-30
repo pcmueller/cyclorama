@@ -9,16 +9,13 @@
 
 ## Please describe the changes made below
 
-- Fix:
+Fix:
 
 
-
-- Feature:
-
+Feature:
 
 
 ## How has this been tested?
 - [ ] In Browser
 - [ ] In Console
-- [ ] Cypress
 - [ ] Postman

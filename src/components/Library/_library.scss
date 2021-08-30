@@ -1,0 +1,15 @@
+.library {
+  display: flex;
+  justify-content: center;
+  padding-top: 2vw;
+  width: 100%;
+  height: auto;
+}
+
+.movie-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: 95%;
+  height: auto;
+}

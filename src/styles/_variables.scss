@@ -1,0 +1,40 @@
+// FONTS
+
+$marker: 'Permanent Marker';
+$roboto: 'Roboto',
+sans-serif;
+
+// COLORS
+
+$ghost-white: #F4F4F9;
+$opaque-white: rgba(255, 255, 255, 0.845);
+
+$onyx: linear-gradient(to right, rgb(24, 24, 24) 0%, rgb(48, 48, 48) 30%, rgb(55, 55, 55) 50%, rgb(48, 48, 48) 70%, rgb(24, 24, 24) 100%);
+
+$deep-sky-blue: #00BFFF;
+
+$steel-teal: #598285;
+$charcoal: #2F4550;
+$charleston-green: #262828;
+$eerie-black: #212121;
+
+// OPAQUE BACKGROUNDS
+
+$opaque-light: rgba(36, 91, 109, 0.322);
+$opaque-dark: rgba(0, 0, 0, 0.623);
+
+// BOX SHADOW
+
+$shadow-main: inset 0 -3em 3em rgba(0, 0, 0, 0),
+0.3em 0.3em 0.3em 0.1em rgba(0, 0, 0, 0.2),
+0.5em 0.5em 0.5em 0.2em rgba(0, 0, 0, 0.2);
+
+
+// MIXINS
+
+@mixin flex-center($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}

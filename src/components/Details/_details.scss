@@ -1,0 +1,31 @@
+// image wrapper
+
+.movie-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 1600px;
+  height: 100vh;
+  min-height: 756px;
+}
+
+// movie info box
+
+.movie-info {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  height: auto;
+  width: 80%;
+  margin: 4em 2em 4em 2em;
+  padding: 4em;
+  border-radius: 110px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}

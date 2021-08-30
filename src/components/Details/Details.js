@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { fetchMovieDetails } from '../../utilities/apiCalls';
 import utils from '../../utilities/utils';
+import { NavLink } from 'react-router-dom';
+
+var dayjs = require('dayjs');
 
 const Details = ({ id, error, setError }) => {
 
@@ -58,7 +60,7 @@ const Details = ({ id, error, setError }) => {
                 </div>
                 <p className='description'>{movie.description}</p>
                 <p className='release-date'> 
-                  Released: {movie.releaseDate}
+                  Released: {dayjs(movie.releaseDate).format('MMMM D, YYYY')}
                 </p>
                 <p className='runtime'>
                   Runtime: {movie.duration}

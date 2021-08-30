@@ -14,6 +14,7 @@ const Main = ({ movies, error, setError }) => {
 
   useEffect(() => {
     populateGenreList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards, filtered]);
 
   useEffect(() => {

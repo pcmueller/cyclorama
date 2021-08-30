@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovieDetails } from '../../utils/apiCalls';
-import utils from '../../utils/utils';
+import { fetchMovieDetails } from '../../utilities/apiCalls';
+import utils from '../../utilities/utils';
 import { NavLink } from 'react-router-dom';
 
 var dayjs = require('dayjs');

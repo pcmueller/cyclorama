@@ -1,0 +1,31 @@
+// GLOW
+
+.glow-effect {
+  &:hover {
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px $ghost-white,
+        0 0 20px $ghost-white,
+        0 0 30px $ghost-white,
+        0 0 40px greenyellow,
+        0 0 70px greenyellow,
+        0 0 80px green,
+        0 0 100px green,
+        0 0 150px green;
+    }
+
+    to {
+      text-shadow: 0 0 5px $ghost-white,
+        0 0 10px $ghost-white,
+        0 0 15px $ghost-white,
+        0 0 20px greenyellow,
+        0 0 35px greenyellow,
+        0 0 40px green,
+        0 0 50px green,
+        0 0 75px green;
+    }
+  }
+}

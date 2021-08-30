@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Card = ({ id, title }) => {
+function Card({ id, title }) {
 
   return (
     <Link to={`/${id}`} className='link-container' title={title}>
@@ -18,4 +18,3 @@ const Card = ({ id, title }) => {
 }
 
 export default Card;
-

@@ -1,0 +1,20 @@
+// FONTS
+
+$marker: 'Permanent Marker';
+$roboto: 'Roboto',
+sans-serif;
+
+// BOX SHADOW
+
+$shadow-main: inset 0 -3em 3em rgba(0, 0, 0, 0),
+0.3em 0.3em 0.3em 0.1em rgba(0, 0, 0, 0.2),
+0.5em 0.5em 0.5em 0.2em rgba(0, 0, 0, 0.2);
+
+// MIXINS
+
+@mixin flex-center($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}

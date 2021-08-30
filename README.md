@@ -6,6 +6,7 @@
 
 ## Challenge Specifications
 
+
 ### User stories are as follows:
 
 • A user should be able to view a home page with a list of movies with their image and title.
@@ -27,6 +28,7 @@ either one or the other.
 • If any of the filters do not return any movies, the UI should indicate that no results were found.
 
 • If the image for a specific movie is not found, the application should display the included “defaultImage”
+
 
 ### What we are looking for:
 
@@ -51,6 +53,7 @@ either one or the other.
 • Sound logic for how the search and filter are architected
 
 • Full Git history with atomic commits
+
 
 ### Stretch goals:
 

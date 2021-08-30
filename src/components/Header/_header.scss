@@ -9,3 +9,14 @@
   padding-top: 1em;
   box-shadow: $shadow-main;
 }
+
+.app-title {
+  text-align: center;
+  width: 100%;
+  color: rgb(135, 225, 96);
+  font-family: $marker;
+  text-shadow: 0px 5px 20px $eerie-black;
+  font-size: 5em;
+  letter-spacing: 10px;
+  margin-top: 0.25em;
+}

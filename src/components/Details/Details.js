@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { fetchMovieDetails } from '../../utilities/apiCalls';
+import utils from '../../utilities/utils';
 
 const Details = ({ id, error, setError }) => {
 
@@ -16,6 +17,12 @@ const Details = ({ id, error, setError }) => {
         setError('Uh Oh, Something Went Wrong 🎭')
       })
   }, [id, setError]);
+
+  const formatList = (list) => {
+    let capitalized = utils.capitalizeElements(list);
+
+    return capitalized.join(' | ');
+  }
 
   return (
   <>
@@ -40,14 +47,14 @@ const Details = ({ id, error, setError }) => {
                   src={`moviePosterImages/${movie.id}.jpeg`}
                   onError={(e)=>{e.target.src="moviePosterImages/defaultImage.jpeg"}}
                 />
-                {movie.moods.length > 0 && <p className='moods'>{movie.moods}</p>}
+                {movie.moods.length > 0 && <p className='moods'>{formatList(movie.moods)}</p>}
               </div>
             </div>
             <div className='movie-info-right'>
               <div className='movie-info-box'>
                 <h1 className='title'>{movie.title}</h1>
                 <div className='genre-box'>
-                  <p className='genres'>{movie.genres}</p>
+                  <p className='genres'>{formatList(movie.genres)}</p>
                 </div>
                 <p className='description'>{movie.description}</p>
                 <p className='release-date'> 

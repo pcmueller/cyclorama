@@ -56,19 +56,26 @@ const App = () => {
       return <Redirect to='/'/>;
     }
   }
-
   return (
     <Router>
-      <Route path='/:id' render={({ match }) => displaySelectedCard(match) }/>
-      <Route exact path='/' render={() =>
-        <Main
-          movies={movies}
-          error={error}
-          setError={setError}
+      <div className='app'>
+        <Route path='/:id' render={({ match }) => displaySelectedCard(match) }/>
+        <Route exact path='/' render={() =>
+          <Main
+            movies={movies}
+            error={error}
+            setError={setError}
+          />
+        }/>
+        <Route render= {() => {
+            <div className='message-box'>
+              <h1 className='message'>Page Not Found</h1>
+            </div>
+          }}
         />
-      }/>
+      </div>
     </Router>
-  )
+  );
 }
 
 export default App;

@@ -6,7 +6,9 @@ const Card = ({ id, title }) => {
     <article className='movie-card grow'>
       <img 
         id={id} 
-        title={title}
+        alt={`${title} poster`}
+        src={`moviePosterImages/${id}.jpeg`}
+        onError={(e)=>{e.target.src="moviePosterImages/defaultImage.jpeg"}}
       />
     </article>
   )

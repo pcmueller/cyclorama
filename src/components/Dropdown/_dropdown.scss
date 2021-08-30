@@ -1,0 +1,81 @@
+.dropdown-container {
+  display: flex;
+  width: 50%;
+  height: 100%;
+}
+
+.select {
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown {
+  width: 100%;
+  height: 100%;
+}
+
+.select {
+  position: relative;
+  width: 70%;
+  margin-right: 5%;
+}
+
+/*To remove button from IE11, thank you Matt */
+select::-ms-expand {
+  display: none;
+}
+
+.select:after {
+  content: '<>';
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+  top: 15px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  /*left line */
+  position: absolute;
+  pointer-events: none;
+
+}
+
+.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  padding: 0px 24px;
+  line-height: 1.75;
+  color: #595757c9;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+  border-radius: 3px;
+}
+
+.clear-btn {
+  width: 25%;
+  height: 100%;
+  font-size: 0.9em;
+  font-family: $roboto;
+  color: $opaque-white;
+  border: 1px solid $eerie-black;
+  border-radius: 5px;
+  background-color: $opaque-dark;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  i {
+    margin-right: 0.75em;
+  }
+
+  &:hover {
+    background-color: $opaque-light;
+    border: 1px solid black;
+    color: $ghost-white;
+  }
+}

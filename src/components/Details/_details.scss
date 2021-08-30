@@ -29,3 +29,215 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+
+// left side
+
+.movie-info-left {
+  @include flex-center(column);
+  height: 100%;
+}
+
+.poster {
+  @include flex-center(column);
+  height: 100%;
+  width: 70%;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: $shadow-main;
+  }
+}
+
+.home-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 5%;
+  margin-bottom: 2em;
+}
+
+.home-btn {
+  width: 12em;
+  height: 4em;
+  font-size: 0.9em;
+  font-family: $roboto;
+  color: $opaque-white;
+  border: 1px solid $eerie-black;
+  border-radius: 5px;
+  background-color: $opaque-dark;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  i {
+    margin-right: 0.75em;
+  }
+
+  &:hover {
+    background-color: $opaque-light;
+    border: 1px solid black;
+    color: $ghost-white;
+  }
+}
+
+.moods {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 1.2em;
+  color: $ghost-white;
+}
+
+// right side
+
+.movie-info-right {
+  @include flex-center(column);
+  align-items: flex-start;
+  height: 100%;
+  color: $ghost-white;
+}
+
+.movie-info-box {
+  @include flex-center(column);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 0.5em;
+}
+
+.title {
+  margin-bottom: 0.6em;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+  color: $ghost-white;
+}
+
+.genre-box {
+  width: 60%;
+  border-bottom: 1px solid $ghost-white;
+  padding-bottom: 1em;
+}
+
+.genres {
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.description {
+  margin: 2.5em auto 2.5em auto;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1em;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.release-date {
+  font-weight: 300;
+  margin-bottom: 1.25em;
+}
+
+.runtime {
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 769px) {
+  .movie-info {
+    width: 80%;
+    margin: 4em 2em 2em 2em;
+    padding: 3em;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .movie-info-container {
+    max-width: 1600px;
+    min-height: 700px;
+    height: auto;
+  }
+
+  .movie-info {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: auto;
+    max-height: 120vh;
+    margin: 1em 0.5em 0.5em 0.5em;
+    padding: 2em;
+  }
+
+  .movie-info-left {
+    padding: 0;
+    margin: 0;
+    height: 50%;
+  }
+
+  .poster {
+    @include flex-center(column);
+    width: 70%;
+    margin-bottom: 1em;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: $shadow-main;
+    }
+  }
+
+  .movie-info-right {
+    height: 50%;
+  }
+
+  .title {
+    margin-bottom: 0.4em;
+    font-size: 2em;
+    letter-spacing: 1px;
+  }
+
+  .genre-box {
+    width: 60%;
+    border-bottom: 1px solid $ghost-white;
+    padding-bottom: 1em;
+  }
+
+  .genres {
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .description {
+    margin: 1.5em auto 1.5em auto;
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+
+  .release-date {
+    margin-bottom: 1.25em;
+    font-weight: 300;
+    font-size: 0.8em;
+
+  }
+
+  .runtime {
+    margin-bottom: 1em;
+    font-weight: 300;
+    font-size: 0.8em;
+
+  }
+
+  .home-btn-container {
+    margin-top: 1em;
+    width: 30%;
+  }
+}

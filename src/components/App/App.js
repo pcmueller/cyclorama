@@ -60,13 +60,13 @@ const App = () => {
   return (
     <Router>
       <Route path='/:id' render={({ match }) => displaySelectedCard(match) }/>
-      <Route>
+      <Route exact path='/' render={() =>
         <Main
           movies={movies}
           error={error}
           setError={setError}
         />
-      </Route>
+      }/>
     </Router>
   )
 }

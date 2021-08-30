@@ -40,8 +40,26 @@ const App = () => {
     setMovies(movieArr);
   }
 
+
+  const displaySelectedCard = (match) => {
+    const isMovieID = movies.find(movie => movie.id === match.params.id);
+
+    if (isMovieID) {
+      return (
+        <Details
+          id={match.params.id}
+          error={error}
+          setError={setError}
+        />
+      )
+    } else {
+      return <Redirect to='/'/>;
+    }
+  }
+
   return (
     <Router>
+      <Route path='/:id' render={({ match }) => displaySelectedCard(match) }/>
       <Route>
         <Main
           movies={movies}
@@ -49,9 +67,6 @@ const App = () => {
           setError={setError}
         />
       </Route>
-      {/* <Route>
-        <Details></Details>
-      </Route> */}
     </Router>
   )
 }

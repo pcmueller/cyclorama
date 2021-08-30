@@ -14,6 +14,18 @@ export const fetchAllMovies = async () => {
   })
 }
 
+export const fetchMovieDetails = async (id) => {
+  return fetch(`${baseURL}/${id}`, {
+    headers: {
+      Authorization: `Api-Key ${API_KEY}`,
+    },
+  })
+  .then(response => {
+    handleErrors(response)
+    return response.json()
+  })
+}
+
 const handleErrors = (response) => {
   if (!response.ok) {
     console.log(response);

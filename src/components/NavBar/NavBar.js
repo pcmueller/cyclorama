@@ -2,12 +2,16 @@ import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import Dropdown from '../Dropdown/Dropdown';
 
-const NavBar = () => {
+const NavBar = ({ setQuery, clearSearch }) => {
 
   return (
     <nav className='nav-bar'>
-      <SearchBar></SearchBar>
-      <Dropdown></Dropdown>
+      <SearchBar
+        setQuery={setQuery}
+        clearSearch={clearSearch}
+      />
+      <Dropdown
+      />
     </nav>
   )
 }

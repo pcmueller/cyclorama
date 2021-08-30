@@ -5,11 +5,27 @@ import Library from '../Library/Library';
 const Main = ({ movies, error, setError }) => {
 
   const [ cards, setCards ] = useState([]);
+  const [ query, setQuery] = useState([]);
+  const [ searchResults, setSearchResults ] = useState([]);
   const [ filtered, setFiltered ] = useState([]);
+
+  const clearSearch = () => {
+    setQuery('');
+    setSearchResults([]);
+    setError('');
+    filterResults();
+  }
+
+  const filterResults = () => {
+    setFiltered(searchResults);
+  }
 
   return (
     <>
-      <Header></Header>
+      <Header
+        setQuery={setQuery}
+        clearSearch={clearSearch}
+      />
       <Library
         movies={movies}
         cards={cards}

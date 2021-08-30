@@ -27,7 +27,6 @@ const App = () => {
     })
   }
 
-
   const cleanMovieData = (data) => {
     const movieArr = data.map(movie => {
       return {
@@ -36,14 +35,11 @@ const App = () => {
         genres: movie.genres
       }
     })
-    console.log(movieArr);
     setMovies(movieArr);
   }
 
-
   const displaySelectedCard = (match) => {
     const isMovieID = movies.find(movie => movie.id === match.params.id);
-
     if (isMovieID) {
       return (
         <Details
@@ -56,6 +52,7 @@ const App = () => {
       return <Redirect to='/'/>;
     }
   }
+
   return (
     <Router>
       <div className='app'>

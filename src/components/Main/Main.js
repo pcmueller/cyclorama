@@ -12,6 +12,11 @@ const Main = ({ movies, error, setError }) => {
   const [ filtered, setFiltered ] = useState([]);
   const [ genres, setGenres ] = useState([]);
 
+  useEffect(() => {
+    populateGenreList();
+  }, [cards, filtered]);
+
+
   const clearSearch = () => {
     setQuery('');
     setSearchResults([]);
@@ -22,7 +27,6 @@ const Main = ({ movies, error, setError }) => {
   const filterResults = () => {
     setFiltered(searchResults);
   }
-
 
   const populateGenreList = () => {
     const genreList= [];
@@ -46,9 +50,21 @@ const Main = ({ movies, error, setError }) => {
     setGenres(genreList.sort());
   }
 
+
+  const clearSelection = () => {
+    setSelection('');
+    setSelectResults([]);
+    setError('');
+    filterResults();
+  }
+
   return (
     <>
       <Header
+        genres={genres}
+        selection={selection}
+        setSelection={setSelection}
+        clearSelection={clearSelection}
         setQuery={setQuery}
         clearSearch={clearSearch}
       />

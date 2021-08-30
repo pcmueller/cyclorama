@@ -50,6 +50,22 @@ const Main = ({ movies, error, setError }) => {
     setGenres(genreList.sort());
   }
 
+    const filterByGenre = () => {
+    const matches = [];
+
+    if (selection) {
+      cards.forEach(card => {
+        if (card.props.genres.includes(selection)) {
+          matches.push(card);
+        }
+      });
+      if (!matches.length) {
+        setError('Sorry, no results found.');
+      }
+    }
+    setSelectResults(matches);
+  }
+
 
   const clearSelection = () => {
     setSelection('');

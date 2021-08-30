@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
+import Library from '../Library/Library';
 
 const Main = () => {
-
 
   return (
     <>
       <Header></Header>
-      <main className='main-view'>
-        MOVIE LIBRARY
-      </main>
+      <Library></Library>
     </>
   )
 }

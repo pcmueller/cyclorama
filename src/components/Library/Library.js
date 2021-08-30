@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 const Library = () => {
 
   return (
-    <main className='library'>
+    <main className='main-page'>
       <Card></Card>
     </main>
   )

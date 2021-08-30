@@ -10,6 +10,26 @@
   box-shadow: $shadow-main;
 }
 
+.home-link {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  text-decoration: none;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  margin-left: 4em;
+}
+
+.logo {
+  height: 115px;
+  width: 115px;
+}
+
 .app-title {
   text-align: center;
   width: 100%;
@@ -19,4 +39,38 @@
   font-size: 5em;
   letter-spacing: 10px;
   margin-top: 0.25em;
+}
+
+@media screen and (max-width: 769px) {
+  .app-header {
+    height: 10em;
+  }
+
+  .logo {
+    height: 70px;
+    width: 70px;
+  }
+
+  .app-title {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .app-header {
+    height: 7em;
+  }
+
+  .logo-container {
+    margin-left: 2em;
+  }
+
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+
+  .app-title {
+    font-size: 1.5em;
+  }
 }

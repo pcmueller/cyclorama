@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import Dropdown from '../Dropdown/Dropdown';
 
-const NavBar = ({ setQuery, clearSearch }) => {
+const NavBar = ({ setQuery, clearSearch, genres, setSelection, clearSelection }) => {
 
   return (
     <nav className='nav-bar'>
@@ -11,6 +11,9 @@ const NavBar = ({ setQuery, clearSearch }) => {
         clearSearch={clearSearch}
       />
       <Dropdown
+        genres={genres}
+        setSelection={setSelection}
+        clearSelection={clearSelection}
       />
     </nav>
   )

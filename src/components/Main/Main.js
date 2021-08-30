@@ -32,6 +32,20 @@ const Main = ({ movies, error, setError }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selection]);
 
+  const searchMovies = () => {
+    setError('');
+    let matches;
+    if (query) {
+      matches = cards.filter(card => card.props.title.toLowerCase().includes(query));
+      if (!matches.length) {
+        setError('Sorry, no results found.');
+      }
+    } else {
+      matches = [];
+    }
+    setSearchResults(matches);
+  }
+
   const clearSearch = () => {
     setQuery('');
     setSearchResults([]);

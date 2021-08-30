@@ -46,15 +46,20 @@ const Main = ({ movies, error, setError }) => {
     setSearchResults(matches);
   }
 
-  const clearSearch = () => {
-    setQuery('');
-    setSearchResults([]);
-    setError('');
-    filterResults();
-  }
+  const filterByGenre = () => {
+    const matches = [];
 
-  const filterResults = () => {
-    setFiltered(searchResults);
+    if (selection) {
+      cards.forEach(card => {
+        if (card.props.genres.includes(selection)) {
+          matches.push(card);
+        }
+      });
+      if (!matches.length) {
+        setError('Sorry, no results found.');
+      }
+    }
+    setSelectResults(matches);
   }
 
   const populateGenreList = () => {
@@ -79,28 +84,38 @@ const Main = ({ movies, error, setError }) => {
     setGenres(genreList.sort());
   }
 
-    const filterByGenre = () => {
-    const matches = [];
-
-    if (selection) {
-      cards.forEach(card => {
-        if (card.props.genres.includes(selection)) {
-          matches.push(card);
-        }
-      });
-      if (!matches.length) {
-        setError('Sorry, no results found.');
-      }
-    }
-    setSelectResults(matches);
+  const clearSearch = () => {
+    setQuery('');
+    setSearchResults([]);
+    setError('');
+    filterResults();
   }
-
 
   const clearSelection = () => {
     setSelection('');
     setSelectResults([]);
     setError('');
     filterResults();
+  }
+
+  const filterResults = () => {
+    if (error.length) {
+      setFiltered([]);
+    } else if (searchResults.length && !selectResults.length) {
+      setFiltered(searchResults);
+    } else if (!searchResults.length && selectResults.length) {
+      setFiltered(selectResults);
+    } else if (searchResults.length && selectResults.length) {
+      const crossFiltered = []
+      searchResults.forEach(searchElem => {
+        if (selectResults.includes(searchElem)) {
+          crossFiltered.push(searchElem);
+        }
+      });
+      setFiltered(crossFiltered);
+    } else {
+      setFiltered(cards);
+    }
   }
 
   return (

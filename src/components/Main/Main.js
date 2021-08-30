@@ -7,7 +7,10 @@ const Main = ({ movies, error, setError }) => {
   const [ cards, setCards ] = useState([]);
   const [ query, setQuery] = useState([]);
   const [ searchResults, setSearchResults ] = useState([]);
+  const [ selection, setSelection ] = useState('');
+  const [ selectResults, setSelectResults ] = useState([]);
   const [ filtered, setFiltered ] = useState([]);
+  const [ genres, setGenres ] = useState([]);
 
   const clearSearch = () => {
     setQuery('');
@@ -18,6 +21,29 @@ const Main = ({ movies, error, setError }) => {
 
   const filterResults = () => {
     setFiltered(searchResults);
+  }
+
+
+  const populateGenreList = () => {
+    const genreList= [];
+
+    let available;
+    
+    if (searchResults.length) {
+      available = searchResults;
+    } else {
+      available = cards;
+    }
+    
+    available.forEach(card => {
+      card.props.genres.forEach(genre => {
+        if (!genreList.includes(genre)) {
+          genreList.push(genre);
+        }
+      })
+    });
+    
+    setGenres(genreList.sort());
   }
 
   return (

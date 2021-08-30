@@ -160,6 +160,27 @@
   font-weight: 300;
 }
 
+.message-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: $deep-sky-blue;
+  font-family: $marker;
+  font-size: 3em;
+  text-shadow: 0px 5px 20px $eerie-black;
+}
+
 @media screen and (max-width: 769px) {
   .movie-info {
     width: 80%;

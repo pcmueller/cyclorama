@@ -35,7 +35,7 @@ const Details = ({ id, error, setError }) => {
   }
 
   return (
-    <>
+    <section className='movie-info-container' style={{ backgroundImage: `url(movieHeroImages/${movie?.id}.jpeg)`}}>
       {error && 
         <div className='message-box'>
           <h2 className='message'>{error}</h2>
@@ -45,39 +45,39 @@ const Details = ({ id, error, setError }) => {
         <div className='message-box'>
           <h2 className='message'>Page Loading 🍿</h2>
         </div>
-      } 
+      }
       {movie && 
-        <section className='movie-info-container' style={{ backgroundImage: `url(movieHeroImages/${movie.id}.jpeg)`}}>
+        <>
           <article className='movie-info'>
             <div className='movie-info-left'>
               <div className='poster'>
                 <img 
-                  id={movie.id}
-                  alt={`${movie.title} poster`}
-                  src={`moviePosterImages/${movie.id}.jpeg`}
+                  id={movie?.id}
+                  alt={`${movie?.title} poster`}
+                  src={`moviePosterImages/${movie?.id}.jpeg`}
                   onError={(e)=>{e.target.src="moviePosterImages/defaultImage.jpeg"}}
                 />
-                {movie.moods.length > 0 && <p className='moods'>{formatList(movie.moods)}</p>}
+                {movie?.moods.length > 0 && <p className='moods'>{formatList(movie?.moods)}</p>}
               </div>
             </div>
             <div className='movie-info-right'>
               <div className='movie-info-box'>
                 <h1 className='title'>{movie.title}</h1>
                 <div className='genre-box'>
-                  <p className='genres'>{formatList(movie.genres)}</p>
+                  <p className='genres'>{formatList(movie?.genres)}</p>
                 </div>
-                <p className='description'>{movie.description}</p>
+                <p className='description'>{movie?.description}</p>
                 Starring: 
                 <p className='top-cast'>
-                  {utils.formatActorNames(movie.topCast)}
+                  {utils.formatActorNames(movie?.topCast)}
                 </p>
                 Released: 
                 <p className='release-date'> 
-                  {dayjs(movie.releaseDate).format('MMMM D, YYYY')}
+                  {dayjs(movie?.releaseDate).format('MMMM D, YYYY')}
                 </p>
                 Runtime: 
                 <p className='runtime'>
-                  {formatRuntime(movie.duration)}
+                  {formatRuntime(movie?.duration)}
                 </p>
               </div>
             </div>
@@ -90,10 +90,9 @@ const Details = ({ id, error, setError }) => {
               </button>
             </NavLink>
           </nav>
-        </section>
-        
+        </>
       }
-    </>
+    </section>
   )
 }
 

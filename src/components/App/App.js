@@ -10,22 +10,21 @@ const App = () => {
   const [ error, setError ] = useState('');
 
   useEffect(() => {
+    const getAllMovies = () => {
+      fetchAllMovies()
+        .then(response => {
+          if (response.data) {
+            cleanMovieData(response.data);
+          }
+        })
+        .catch(error => {
+          setError('Sorry, we\'re unable to load the page at the moment.');
+          console.log(error);
+      })
+    }
     getAllMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getAllMovies = () => {
-    fetchAllMovies()
-      .then(response => {
-        if (response.data) {
-          cleanMovieData(response.data);
-        }
-      })
-      .catch(error => {
-        setError('Sorry, we\'re unable to load the page at the moment.');
-        console.log(error);
-    })
-  }
 
   const cleanMovieData = (data) => {
     const movieArr = data.map(movie => {

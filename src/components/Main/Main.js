@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../Header/Header';
 import Library from '../Library/Library';
 
@@ -24,7 +24,6 @@ const Main = ({ movies, error, setError }) => {
 
   useEffect(() => {
     searchMovies();
-    populateGenreList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
   
@@ -45,6 +44,7 @@ const Main = ({ movies, error, setError }) => {
       matches = [];
     }
     setSearchResults(matches);
+    populateGenreList();
   }
 
   const filterByGenre = () => {
@@ -64,25 +64,21 @@ const Main = ({ movies, error, setError }) => {
   }
 
   const populateGenreList = () => {
-    const genreList= [];
-
-    let available;
     
-    if (searchResults.length) {
-      available = searchResults;
-    } else {
-      available = cards;
+    const matchAvailGenres = (available) => {
+      return available.reduce((arr, card) => {
+        card.props.genres.forEach(genre => {
+          if (!arr.includes(genre)) {
+            arr.push(genre);
+          }
+        })
+        return arr.sort();
+      }, []);
     }
-    
-    available.forEach(card => {
-      card.props.genres.forEach(genre => {
-        if (!genreList.includes(genre)) {
-          genreList.push(genre);
-        }
-      })
-    });
-    
-    setGenres(genreList.sort());
+
+    searchResults.length ? 
+      setGenres(matchAvailGenres(searchResults)) : 
+      setGenres(matchAvailGenres(cards));
   }
 
   const clearSearch = () => {

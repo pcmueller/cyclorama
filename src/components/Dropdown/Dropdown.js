@@ -5,20 +5,19 @@ const Dropdown = ({ genres, setSelection, clearSelection }) => {
   const [ options, setOptions ] = useState([]);
 
   useEffect(() => {
+    const populateOptions = () => {
+      const listElems = genres.map(genre => {
+        return (
+          <option key={genre.toLowerCase()} value={genre}>{genre}</option>
+        )
+      })
+      setOptions(listElems);
+    }
+
     if (genres?.length) {
       populateOptions();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [genres]);
-
-  const populateOptions = () => {
-    const listElems = genres.map(genre => {
-      return (
-        <option key={genre.toLowerCase()} value={genre}>{genre}</option>
-      )
-    })
-    setOptions(listElems);
-  }
 
   const handleSelect = (e) => {
     setSelection(e.target.value);

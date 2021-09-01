@@ -7,41 +7,38 @@ const Library = ({ movies, cards, setCards, filtered, error }) => {
   const [ text, setText ] = useState('All Movies');
   
   useEffect(() => {
+    const populateLibrary = () => {
+      const newCards = movies.map(movie => {
+        return (
+          <Card
+            key={movie?.id}
+            id={movie?.id}
+            title={movie?.title}
+            genres={utils.capitalizeElements(movie?.genres)}
+          />
+        )
+      });
+
+      if (newCards.length === movies.length) {
+        setCards(newCards);
+      }
+    }
+
     if (movies.length > 0) {
       populateLibrary();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movies]);
+  }, [movies, setCards]);
   
   useEffect(() => {
+    const determineText = () => {
+      if (filtered.length > 0 && filtered.length < movies.length) {
+        setText(`Results Found: ${filtered.length}`);
+      } else {
+        setText('Now Playing');
+      }
+    }
     determineText();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filtered]);
-
-  const determineText = () => {
-    if (filtered.length > 0 && filtered.length < movies.length) {
-      setText(`Results Found: ${filtered.length}`);
-    } else {
-      setText('Now Playing');
-    }
-  }
-
-  const populateLibrary = () => {
-    const newCards = movies.map(movie => {
-      return (
-        <Card
-          key={movie?.id}
-          id={movie?.id}
-          title={movie?.title}
-          genres={utils.capitalizeElements(movie?.genres)}
-        />
-      )
-    });
-
-    if (newCards.length === movies.length) {
-      setCards(newCards);
-    }
-  }
+  }, [filtered, movies.length]);
 
   return (
     <main className='main-page'>

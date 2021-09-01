@@ -12,58 +12,7 @@ const Main = ({ movies, error, setError }) => {
   const [ filtered, setFiltered ] = useState([]);
   const [ genres, setGenres ] = useState([]);
 
-  useEffect(() => {
-    populateGenreList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cards, filtered]);
-
-  useEffect(() => {
-    filterResults();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchResults, selectResults]);
-
-  useEffect(() => {
-    searchMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
-  
-  useEffect(() => {
-    filterByGenre();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selection]);
-
-  const searchMovies = () => {
-    setError('');
-    let matches;
-    if (query) {
-      matches = cards.filter(card => card.props.title.toLowerCase().includes(query));
-      if (!matches.length) {
-        setError('Sorry, no results found.');
-      }
-    } else {
-      matches = [];
-    }
-    setSearchResults(matches);
-    populateGenreList();
-  }
-
-  const filterByGenre = () => {
-    const matches = [];
-
-    if (selection) {
-      cards.forEach(card => {
-        if (card.props.genres.includes(selection)) {
-          matches.push(card);
-        }
-      });
-      if (!matches.length) {
-        setError('Sorry, no results found.');
-      }
-    }
-    setSelectResults(matches);
-  }
-
-  const populateGenreList = () => {
+  const populateGenreList = useCallback(() => {
     
     const matchAvailGenres = (available) => {
       return available.reduce((arr, card) => {
@@ -79,23 +28,52 @@ const Main = ({ movies, error, setError }) => {
     searchResults.length ? 
       setGenres(matchAvailGenres(searchResults)) : 
       setGenres(matchAvailGenres(cards));
-  }
 
-  const clearSearch = () => {
-    setQuery('');
-    setSearchResults([]);
+  }, [cards, searchResults]);
+
+  useEffect(() => {
+    populateGenreList();
+  }, [cards, filtered, searchResults, populateGenreList]);
+
+  const filterByGenre = useCallback(() => {
+    const matches = [];
+  
+    if (selection.length) {
+      cards.forEach(card => {
+        if (card.props.genres.includes(selection)) {
+          matches.push(card);
+        }
+      });
+      if (!matches.length) {
+        setError('Sorry, no results found.');
+      }
+    }
+    setSelectResults(matches);
+  }, [cards, selection, setError]);
+
+  useEffect(() => {
+    filterByGenre();
+  }, [selection, filterByGenre]);
+
+  const searchMovies = useCallback(() => {
     setError('');
-    filterResults();
-  }
+    let matches;
+    if (query) {
+      matches = cards.filter(card => card.props.title.toLowerCase().includes(query));
+      if (!matches.length) {
+        setError('Sorry, no results found.');
+      }
+    } else {
+      matches = [];
+    }
+    setSearchResults(matches);
+  }, [cards, query, setError]);
 
-  const clearSelection = () => {
-    setSelection('');
-    setSelectResults([]);
-    setError('');
-    filterResults();
-  }
+  useEffect(() => {
+    searchMovies();
+  }, [query, searchMovies]);
 
-  const filterResults = () => {
+  const filterResults = useCallback(() => {
     if (error.length) {
       setFiltered([]);
     } else if (searchResults.length && !selectResults.length) {
@@ -113,6 +91,24 @@ const Main = ({ movies, error, setError }) => {
     } else {
       setFiltered(cards);
     }
+  }, [cards, error.length, searchResults, selectResults]);
+
+  useEffect(() => {
+    filterResults();
+  }, [searchResults, selectResults, filterResults]);
+
+  const clearSearch = () => {
+    setQuery('');
+    setSearchResults([]);
+    setError('');
+    filterResults();
+  }
+
+  const clearSelection = () => {
+    setSelection('');
+    setSelectResults([]);
+    setError('');
+    filterResults();
   }
 
   return (

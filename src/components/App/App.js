@@ -14,7 +14,7 @@ const App = () => {
       fetchAllMovies()
         .then(response => {
           if (response.data) {
-            cleanMovieData(response.data);
+            cleanAllMovieData(response.data);
           }
         })
         .catch(error => {
@@ -26,12 +26,12 @@ const App = () => {
   }, []);
 
 
-  const cleanMovieData = (data) => {
+  const cleanAllMovieData = (data) => {
     const movieArr = data.map(movie => {
       return {
-        id: movie.id,
-        title: movie.title,
-        genres: movie.genres
+        id: movie?.id,
+        title: movie?.title,
+        genres: movie?.genres
       }
     })
     setMovies(movieArr);

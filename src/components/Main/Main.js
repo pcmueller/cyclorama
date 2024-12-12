@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../Header/Header';
 import Library from '../Library/Library';
 
@@ -12,28 +12,50 @@ const Main = ({ movies, error, setError }) => {
   const [ filtered, setFiltered ] = useState([]);
   const [ genres, setGenres ] = useState([]);
 
-  useEffect(() => {
-    populateGenreList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cards, filtered]);
+  const populateGenreList = useCallback(() => {
+    
+    const matchAvailGenres = (available) => {
+      return available.reduce((arr, card) => {
+        card.props.genres.forEach(genre => {
+          if (!arr.includes(genre)) {
+            arr.push(genre);
+          }
+        })
+        return arr.sort();
+      }, []);
+    }
+
+    searchResults.length ? 
+      setGenres(matchAvailGenres(searchResults)) : 
+      setGenres(matchAvailGenres(cards));
+
+  }, [cards, searchResults]);
 
   useEffect(() => {
-    filterResults();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchResults, selectResults]);
-
-  useEffect(() => {
-    searchMovies();
     populateGenreList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [cards, filtered, searchResults, populateGenreList]);
+
+  const filterByGenre = useCallback(() => {
+    const matches = [];
   
+    if (selection.length) {
+      cards.forEach(card => {
+        if (card.props.genres.includes(selection)) {
+          matches.push(card);
+        }
+      });
+      if (!matches.length) {
+        setError('Sorry, no results found.');
+      }
+    }
+    setSelectResults(matches);
+  }, [cards, selection, setError]);
+
   useEffect(() => {
     filterByGenre();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selection]);
+  }, [selection, filterByGenre]);
 
-  const searchMovies = () => {
+  const searchMovies = useCallback(() => {
     setError('');
     let matches;
     if (query) {
@@ -45,61 +67,13 @@ const Main = ({ movies, error, setError }) => {
       matches = [];
     }
     setSearchResults(matches);
-  }
+  }, [cards, query, setError]);
 
-  const filterByGenre = () => {
-    const matches = [];
+  useEffect(() => {
+    searchMovies();
+  }, [query, searchMovies]);
 
-    if (selection) {
-      cards.forEach(card => {
-        if (card.props.genres.includes(selection)) {
-          matches.push(card);
-        }
-      });
-      if (!matches.length) {
-        setError('Sorry, no results found.');
-      }
-    }
-    setSelectResults(matches);
-  }
-
-  const populateGenreList = () => {
-    const genreList= [];
-
-    let available;
-    
-    if (searchResults.length) {
-      available = searchResults;
-    } else {
-      available = cards;
-    }
-    
-    available.forEach(card => {
-      card.props.genres.forEach(genre => {
-        if (!genreList.includes(genre)) {
-          genreList.push(genre);
-        }
-      })
-    });
-    
-    setGenres(genreList.sort());
-  }
-
-  const clearSearch = () => {
-    setQuery('');
-    setSearchResults([]);
-    setError('');
-    filterResults();
-  }
-
-  const clearSelection = () => {
-    setSelection('');
-    setSelectResults([]);
-    setError('');
-    filterResults();
-  }
-
-  const filterResults = () => {
+  const filterResults = useCallback(() => {
     if (error.length) {
       setFiltered([]);
     } else if (searchResults.length && !selectResults.length) {
@@ -117,6 +91,24 @@ const Main = ({ movies, error, setError }) => {
     } else {
       setFiltered(cards);
     }
+  }, [cards, error.length, searchResults, selectResults]);
+
+  useEffect(() => {
+    filterResults();
+  }, [searchResults, selectResults, filterResults]);
+
+  const clearSearch = () => {
+    setQuery('');
+    setSearchResults([]);
+    setError('');
+    filterResults();
+  }
+
+  const clearSelection = () => {
+    setSelection('');
+    setSelectResults([]);
+    setError('');
+    filterResults();
   }
 
   return (

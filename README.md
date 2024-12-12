@@ -1,7 +1,5 @@
 # CYCLORAMA
 
- **_A movie app made for the Charter/Spectrum Front-End Code Challenge_**
-
 [Deployed Page](https://cyclorama-app.herokuapp.com/)
 
 ## Challenge Specifications
